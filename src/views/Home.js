@@ -16,5 +16,6 @@ function Home(props){
         </div>
     )
 }
-const NewHome = withUser(Home)
-export default NewHome;
+Home = withUser(Home)
+Home=withStorage('userInfo')(Home)
+export default Home;

@@ -7,7 +7,7 @@ import { render } from 'sass'
 @withStorage('userInfo')
 class Login extends React.Compoent{
     state={
-        initalValues:{
+        initialValues:{
             username:'',
             Password:'',
             remember:true
@@ -32,7 +32,7 @@ class Login extends React.Compoent{
     }
     render(){
         console.log('Login.render')
-        const {initalValues}=this.state;
+        const {initialValues}=this.state;
         const rules={
             username:[{
                 require:true,
@@ -48,36 +48,35 @@ class Login extends React.Compoent{
                 <h1>班级管理系统</h1>
                 <Form
       name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      labelCol={{ span: 6 }}
+      wrapperCol={{ span: 18 }}
+      initialValues={initialValues}
+      onFinish={this.submit}
       autoComplete="off"
     >
       <Form.Item
-        label="Username"
+        label="用户名"
         name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+        rules={rules.username}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label="密码"
         name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={rules.password}
       >
         <Input.Password />
       </Form.Item>
 
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-        <Checkbox>Remember me</Checkbox>
+      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 6, span: 18 }}>
+        <Checkbox>下次免登录</Checkbox>
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+         登录
         </Button>
       </Form.Item>
     </Form>
